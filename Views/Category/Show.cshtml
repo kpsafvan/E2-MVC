@@ -1,0 +1,86 @@
+﻿@model IEnumerable<E2.Models.CategoryModel>
+
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+<script src="../Scripts/Category.js"></script>
+<script src="../Scripts/Category.js"></script>
+<script>
+    function cate(name) {
+
+        if (name == 2) {
+           // alert(name);
+        }
+        let c = '1';
+        if (name == 0) {
+            c = 'No Parent'
+        }
+        const node = document.getElementById('categ');
+       
+        document.getElementById('categ').innerHTML = c;
+        document.getElementById('categ').setAttribute('value',c);
+         if(document.getElementById('categ').childElementCount>0){
+            document.getElementById('categ').removeChild();
+            document.getElementById('categ').appendChild(node);
+        }
+    }
+</script>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDeleted)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <text>@(((string[])ViewData["Parents"])[item.CategoryId]) </text>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifiedDate)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

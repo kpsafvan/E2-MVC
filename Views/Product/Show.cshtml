@@ -1,0 +1,90 @@
+﻿@model IEnumerable<E2.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Show";
+}
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Made)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Made)
+            </td>
+            <td>
+                <p style ="display: -webkit-box;
+                           -webkit-line-clamp: 2;
+                           -webkit-box-orient: vertical;
+                           overflow:auto; "
+                >
+                @Html.DisplayFor(modelItem => item.Description)
+                </p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cat.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+                <td style="white-space: nowrap ;">
+                    <a style="white-space: nowrap ; text-decoration-line: none;" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
+                    <a style="white-space: nowrap ; text-decoration-line: none;" asp-action="Find" asp-route-id="@item.ProductId">View</a>
+                    <a style="white-space: nowrap ; text-decoration-line: none;" asp-action="DeleteCheck" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

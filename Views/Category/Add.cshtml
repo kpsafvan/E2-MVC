@@ -1,0 +1,71 @@
+﻿@model E2.Models.CategoryModel 
+
+
+
+ 
+
+<h4>CategoryModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create"method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Parent" class="control-label"></label>
+                <input asp-for="Parent" class="form-control" />
+                <span asp-validation-for="Parent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Category ID
+                    </th>
+                    <th>
+                        Parent ID
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <tr>
+                        <th>
+                            @item.Name
+                        </th>
+                        <td>
+                            @item.CategoryId
+                        </td>
+                        <td>
+                            @item.Parent
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Show">Back to List</a>
+</div>
+ 
+
+                

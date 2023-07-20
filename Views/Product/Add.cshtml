@@ -1,0 +1,83 @@
+﻿@model E2.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Create</h1>
+
+<h4>ProductModel</h4>
+<hr/>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row g-3" >
+    <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Made" class="control-label"></label>
+                <input asp-for="Made" class="form-control" />
+                <span asp-validation-for="Made" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpDate" class="control-label"></label>
+                <input asp-for="ExpDate" class="form-control" id="ExpId"/>
+                <span asp-validation-for="ExpDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManDate" class="control-label"></label>
+                <input asp-for="ManDate" class="form-control" id="datePickerId" onchange="update()" />
+                <span asp-validation-for="ManDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+    </div>
+    <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea rows="6" asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <select  id="Category" class="form-control" name="Category" asp-items="ViewBag.Categories">
+                    <option value="-1">Please select</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+    </div>
+   
+</div>
+ </form>
+<div>
+    <a asp-action="Show">Back to List</a>
+</div>
+<script>
+    datePickerId.max = new Date().toISOString().split("T")[0];
+  /*  function update() {
+        ExpId.min = document.getElementById('datePickerId').Value();
+    }
+    if (document.getElementById('datePickerId')!=null){
+        ExpId.min = document.getElementById('datePickerId').Value();
+    }*/
+
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

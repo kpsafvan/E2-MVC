@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@{
+    string ccn = @ViewContext.RouteData.Values["controller"].ToString();
+    switch (ccn)
+    {
+        case "Customer":
+            Layout = "_CustomerLayout";
+            break;
+        default:
+            Layout = "_Layout";
+            break;
+    }    
+}

@@ -1,0 +1,16 @@
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SelectList
+@{
+    ViewData["Title"] = "User";
+}
+
+
+<form method="post" asp-controller="Home" asp-action="Login">
+    <select id="User" name="UserId" asp-items="Model">
+        <option value="0">Please select</option>
+    </select>
+    <input type="hidden" name="UserName" />
+    <input type="submit" value="Login" class="btn btn-primary" />
+  
+</form>
+

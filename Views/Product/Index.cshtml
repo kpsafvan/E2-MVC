@@ -1,0 +1,25 @@
+﻿@using  E2.Models;
+@using E2.Controllers;
+@{
+    var product = ViewData.Model;
+    var productss = ViewData["Prod"] as ProductModel;
+}
+<table border="1">
+    <thead>
+        <th>
+            Made
+        </th>
+       
+    </thead>
+    <tr>
+        <td>
+            @product.Made
+        </td>
+       
+    </tr>
+</table>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
